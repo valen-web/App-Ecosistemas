@@ -6,6 +6,9 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIO(server);
 
+app.use('/worker', express.static(__dirname + '/public-worker'));
+app.use('/client', express.static(__dirname + '/public-client'));
+
 io.on('connection', (socket) => {
     console.log(`Un cliente se ha conectado`);
 
