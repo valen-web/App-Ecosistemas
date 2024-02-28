@@ -15,6 +15,16 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('Un cliente se ha desconectado');
     })
+
+    socket.on('update', (cupcake) => {
+        io.emit('update', cupcake);
+    })
+
+    socket.on('finishorder', (cupcake) => {
+        io.emit('finishorder', cupcake);
+
+        //should send that info to somewhere ?
+    })
 })
 
 server.listen(3000, () => {
